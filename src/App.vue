@@ -29,7 +29,7 @@
         <button v-if="page > 1" class="card-form__button" @click="previousPage">
           Previous Page
         </button>
-        <button class="card-form__button" @click="nextPage">Next Page</button>
+        <button v-if="next" class="card-form__button" @click="nextPage">Next Page</button>
       </div>
       <div class="col"></div>
     </div>
@@ -90,6 +90,9 @@ export default {
     },
   },
   computed: {
+    next(){
+     return this.books.length>=20;
+    },
     booksSorted() {
       if (this.sortChoice == "") {
         return this.books;
